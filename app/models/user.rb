@@ -5,8 +5,7 @@ class User < ApplicationRecord
   has_many :fish_catches, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  validates :username, presence: true,
-            uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   def filter_catches(params={})
     associations = {"bait" => "baits.name"}
