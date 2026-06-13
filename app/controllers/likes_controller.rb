@@ -13,7 +13,6 @@ class LikesController < ApplicationController
 
   def destroy
     return unless (like = existing_like)
-
     like.destroy!
 
     render partial: "activity/catch_likes", locals: { fish_catch: @fish_catch }

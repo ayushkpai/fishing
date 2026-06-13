@@ -30,5 +30,4 @@ module FishCatchesHelper
   def currently_sorted?(column)
     params[:sort] == column.to_s
   end
-
 end

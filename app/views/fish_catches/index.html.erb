@@ -3,12 +3,10 @@
     <%= form_with(url: fish_catches_path, method: :get, data: { turbo_frame: "catches", turbo_action: "advance", controller: "form",  action: "input->form#submit"}) do |f| %>
       <div class="row-1">
         <div>
-          <%= f.select :bait, @bait_names,
-              include_blank: "Any Bait", selected: params[:bait] %>
+          <%= f.select :bait, @bait_names, include_blank: "Any Bait", selected: params[:bait] %>
         </div>
         <div>
-          <%= f.select :species, @species,
-              include_blank: "Any Species", selected: params[:species] %>
+          <%= f.select :species, @species, include_blank: "Any Species", selected: params[:species] %>
         </div>
 
         <%= f.hidden_field :sort, value: params[:sort], data: { sort_link_target: "sort" } %>
@@ -20,28 +18,18 @@
              data-range-slider-max-value="<%= @max_weight %>">
 
           <div data-range-slider-target="slider">
-
           </div>
 
-          <%= f.hidden_field :min_weight,
-                  value: params[:min_weight] || @min_weight,
-                  data: { range_slider_target: "currentMin" } %>
+          <%= f.hidden_field :min_weight, value: params[:min_weight] || @min_weight, data: { range_slider_target: "currentMin" } %>
+          <%= f.hidden_field :max_weight, value: params[:max_weight] || @max_weight, data: { range_slider_target: "currentMax" } %>
 
-          <%= f.hidden_field :max_weight,
-                  value: params[:max_weight] || @max_weight,
-                  data: { range_slider_target: "currentMax" } %>
-
-          <div class="label">
-            Weight
-          </div>
+          <div class="label">Weight</div>
         </div>
-
       </div>
+      
       <div class="row-2">
         Show
-        <%= f.select :per_page,
-              options_for_select([5, 10, 25, 50, 100],
-              selected: params[:per_page]) %>
+        <%= f.select :per_page, options_for_select([1, 5, 10, 25, 50, 100, 500], selected: params[:per_page]) %>
       </div>
     <% end %>
   </div>
@@ -52,43 +40,27 @@
         <table>
           <thead>
             <tr>
-              <th class="bait">
-                <%= sort_link_to "Bait", "bait" %>
-              </th>
-              <th class="species">
-                <%= sort_link_to "Species", "species" %>
-              </th>
-              <th class="weight">
-                <%= sort_link_to "Weight", "weight" %>
-              </th>
-              <th class="length">
-                <%= sort_link_to "Length", "length" %>
-              </th>
+              <th class="bait"><%= sort_link_to "Bait", "bait" %></th>
+              <th class="species"><%= sort_link_to "Species", "species" %></th>
+              <th class="weight"><%= sort_link_to "Weight", "weight" %></th>
+              <th class="length"><%= sort_link_to "Length", "length" %></th>
             </tr>
           </thead>
+
           <tbody>
             <% @fish_catches.each do |fish_catch| %>
               <tr>
-                <td class="bait">
-                  <%= fish_catch.bait.name %>
-                </td>
-                <td class="species">
-                  <%= fish_catch.species %>
-                </td>
-                <td class="weight">
-                  <%= fish_catch.weight %> lbs
-                </td>
-                <td class="length">
-                  <%= fish_catch.length %> in
-                </td>
+                <td class="bait"><%= fish_catch.bait.name %></td>
+                <td class="species"><%= fish_catch.species %></td>
+                <td class="weight"><%= fish_catch.weight %> lbs</td>
+                <td class="length"><%= fish_catch.length %> in</td>
               </tr>
             <% end %>
           </tbody>
+
         </table>
         <% if @pagy.pages > 1 %>
-          <div class="footer">
-            <%== pagy_nav(@pagy) %>
-          </div>
+          <div class="footer"><%== pagy_nav(@pagy) %></div>
         <% end %>
       </div>
     <% else %>

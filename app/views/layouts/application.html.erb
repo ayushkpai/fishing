@@ -15,17 +15,8 @@
 
   <body>
     <%= render "layouts/header" %>
-
-    <div id="flash">
-      <%= render "layouts/flash" %>
-    </div>
-
-    <main>
-      <div id="<%= content_id %>">
-        <%= yield %>
-      </div>
-    </main>
-
-    <%= render "layouts/footer" %>
+    <div id="flash"><%= render "layouts/flash" %></div>
+    
+    <main><div id="<%= content_id %>"><%= yield %></div></main>
   </body>
 </html>

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root "baits#index"
 
   resources :baits
-
   resources :tackle_box_items
 
   resources :fish_catches do

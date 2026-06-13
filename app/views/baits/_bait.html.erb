@@ -12,8 +12,7 @@
     </div>
     <% if signed_in? %>
       <% if item = bait.my_tackle_box_item %>
-        <%= button_to "Remove", tackle_box_item_path(item),
-                      method: :delete %>
+        <%= button_to "Remove", tackle_box_item_path(item), method: :delete %>
       <% else %>
         <%= button_to "Add", tackle_box_items_path(bait_id: bait) %>
       <% end %>

@@ -2,15 +2,15 @@
   <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <%= f.label :password, 'Password' %>
+  <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation, 'Confirm Password' %>
+  <%= f.label :password_confirmation, "Confirm Password" %>
   <%= f.password_field :password_confirmation %>
 
   <% if @user.new_record? %>
-    <%= f.submit 'Create Account' %>
+    <%= f.submit "Create Account" %>
   <% else %>
-    <%= f.submit 'Update Account' %>
+    <%= f.submit "Update Account" %>
   <% end %>
 <% end %>
