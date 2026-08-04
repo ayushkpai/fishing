@@ -41,7 +41,7 @@ Bait.create!(
   name: 'Rooster Tail',
   category: 'Spinner',
   image: 'rooster-tail.png',
-  description: "There's a good reason this colorful, spinning bait has been around since the 1950s: it flat out produces. It's also one of Nicole's favorites. 😉"
+  description: "There's a good reason this colorful, spinning bait has been around since the 1950s: it flat out produces"
 )
 
 Bait.create!(
